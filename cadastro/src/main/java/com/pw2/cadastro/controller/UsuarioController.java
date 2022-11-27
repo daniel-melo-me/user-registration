@@ -29,5 +29,47 @@ public class UsuarioController {
         }
     }
 
+    @PutMapping("/editar/{id}")
+    @Transactional
+    public ResponseEntity<?> editar(
+            @RequestBody Usuario usuario,
+            @PathVariable Long id
+    ) {
+        try {
+            usuario.setId(id);
+            return ResponseEntity.status(200).body(repository.save(usuario));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<?> deletar(@PathVariable Long id) {
+        try {
+            repository.deleteById(id);
+            return ResponseEntity.status(200).body("Deletado");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/pesquisar/{id}")
+    public ResponseEntity<?> pesquisar(@PathVariable Long id) {
+        try {
+            Usuario usuario = repository.findById(id).orElseThrow();
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<?> listar() {
+        try {
+            return ResponseEntity.ok().body(repository.findAll());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }
