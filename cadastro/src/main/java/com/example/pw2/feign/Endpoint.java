@@ -6,6 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+// Utiliza a dependência do openfeign para a comunicação com o serviço de auth
 @FeignClient(value = "endpoint", url = "localhost:8081/auth/")
 public interface Endpoint {
 

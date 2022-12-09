@@ -10,6 +10,7 @@ import com.example.pw2.service.UsuarioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,8 @@ public class UsuarioController {
     private final UsuarioService service;
     private final UsuarioRepository repository;
     private final Endpoint endpoint;
+
+    private final PasswordEncoder encoder;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid LoginDTO dto) {
@@ -37,6 +40,7 @@ public class UsuarioController {
         try {
             if(endpoint.validarToken(token)) {
                 usuario.setPerfil(Perfil.ROLE_ALUNO);
+                usuario.setSenha(encoder.encode(usuario.getSenha()));
                 return ResponseEntity.status(201).body(repository.save(usuario));
             } else {
                 return ResponseEntity.status(401).body("Não Autorizado");
