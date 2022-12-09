@@ -1,4 +1,4 @@
-package com.pw2.cadastro.model.enumerations;
+package com.example.pw2.model.enumerations;
 
 public enum Perfil {
 
@@ -16,3 +16,4 @@ public enum Perfil {
         return descricao;
     }
 }
+

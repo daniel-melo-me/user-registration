@@ -1,6 +1,6 @@
-package com.pw2.cadastro.repository;
+package com.example.pw2.repository;
 
-import com.pw2.cadastro.model.Usuario;
+import com.example.pw2.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {

@@ -1,10 +1,10 @@
-package com.pw2.cadastro;
+package com.example.pw2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CadastroApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

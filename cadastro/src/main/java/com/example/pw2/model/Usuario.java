@@ -1,6 +1,6 @@
-package com.pw2.cadastro.model;
+package com.example.pw2.model;
 
-import com.pw2.cadastro.model.enumerations.Perfil;
+import com.example.pw2.model.enumerations.Perfil;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,4 +38,5 @@ public class Usuario implements Serializable {
     private LocalDate dataCriacao = LocalDate.now();
     @LastModifiedDate
     private LocalDate dataAtualizacao;
+
 }
