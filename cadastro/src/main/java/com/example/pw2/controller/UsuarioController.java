@@ -60,6 +60,7 @@ public class UsuarioController {
         try {
             if(endpoint.validarToken(token)) {
                 usuario.setId(id);
+                usuario.setSenha(encoder.encode(usuario.getSenha()));
                 return ResponseEntity.status(200).body(repository.save(usuario));
             } else {
                 return ResponseEntity.status(401).body("Não Autorizado");
